@@ -151,6 +151,7 @@ func (s *Service) List(filter Status) []*Task {
 }
 
 func (s *Service) Complete(name string) (*Task, error) {
+	name = trimName(name)
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	t, ok := s.tasks[name]
